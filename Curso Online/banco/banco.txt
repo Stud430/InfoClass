@@ -1,0 +1,75 @@
+
+
+CREATE TABLE `cursos` (
+  `id` int(11) AUTO_INCREMENT PRIMARY KEY,
+  `curso` varchar(50) NOT NULL,
+  `plataforma` varchar(30) NOT NULL,
+  `duracao` varchar(25),
+  `endereco` varchar(150) NOT NULL,
+  `inicio` varchar(10),
+  `termino` varchar(10),
+  `usuario` varchar(25),
+  `senha` varchar(15),
+  `status_curso` varchar(15),
+  `created` varchar(10)
+) 
+
+
+/* ************************************************************** */
+
+Create VIEW Plataformas as SELECT distinct(plataforma) FROM cursos
+
+
+Create VIEW Plataformas as SELECT plataforma as Plataforma, count(curso) as Cursos FROM cursos
+
+/* CORRETO */
+create view Plataformas as select distinct(plataforma) as Plataforma, COUNT(id) as Cursos FROM cursos GROUP BY plataforma
+
+SELECT count(*) FROM `cursos` WHERE plataforma="Udemy"
+
+SELECT count(*) FROM `cursos` WHERE plataforma="Curso em Vídeo"
+
+SELECT count(*) FROM `cursos` WHERE plataforma="Gyn Cursos"
+
+/* ---------------------------------------------- */
+
+CREATE VIEW Cursos_Registrados AS SELECT COUNT(*) AS Quantidade FROM cursos
+
+/* ---------------------------------------------- */
+
+
+Alter VIEW Cursos_Registrados AS SELECT COUNT(*) AS Quantidade FROM cursos
+
+/* ---------------------------------------------- */
+
+ALTER VIEW Acesso AS SELECT DISTINCT(plataforma) as Plataforma, usuario as Login, senha as Senha from cursos GROUP BY plataforma;
+
+/* ---------------------------------------------- */
+
+CREATE VIEW Acesso AS SELECT DISTINCT(plataforma) as Plataforma, usuario as Login, senha as Senha, COUNT(*) as Cursos from cursos GROUP BY plataforma;
+
+/* ---------------------------------------------- */
+
+SELECT * FROM cursos WHERE curso like 'a%' ORDER BY curso;
+
+/* ---------------------------------------------- */
+
+
+
+/* ---------------------------------------------- */
+
+
+
+/* ---------------------------------------------- */
+
+
+
+/* ---------------------------------------------- */
+
+
+
+/* ---------------------------------------------- */
+
+
+
+/* ---------------------------------------------- */
